@@ -49,6 +49,7 @@ module Guard
     end
 
     def job_names
+      puts 'JOB NAMES WAS CALLED!'
       names = Dir.new(@jenkins_path + 'jobs')
       names = names.reject {|dir| dir == '.' }
       names = names.reject {|dir| dir == '..' }
