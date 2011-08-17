@@ -58,7 +58,6 @@ module Guard
       puts "retrieved #{names.to_s}"
       names = names.reject {|dir| dir == '.' }
       names = names.reject {|dir| dir == '..' }
-      names = names.detect {|dir| File.directory?(dir) }
       puts "#names is returning #{names}"
       names
     end
