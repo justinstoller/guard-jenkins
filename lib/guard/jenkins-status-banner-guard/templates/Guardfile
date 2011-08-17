@@ -1,0 +1,3 @@
+guard 'jenkins-status-banner-guard' do
+  watch(%r{/var/lib/jenkins/jobs/.*})
+end
