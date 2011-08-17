@@ -70,7 +70,7 @@ module Guard
     def next_build_num(job_name)
       nbn_file = File.new( @jenkins_path + 'jobs/' +
                           job_name + '/nextBuildNumber' )
-      nbn_file.gets_strip.to_i
+      nbn_file.gets.strip.to_i
     end
 
     def last_success_num(build_file)
