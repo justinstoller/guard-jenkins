@@ -1,5 +1,5 @@
 module Guard
-  module JenkinsStatusBannerVersion
+  module JenkinsVersion
     VERSION = '0.1.0'
   end
 end

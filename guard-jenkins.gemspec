@@ -1,8 +1,8 @@
-require File.expand_path( 'lib/guard/guard-jenkins-status-banner/version' )
+require File.expand_path( 'lib/guard/guard-jenkins/version' )
 
 Gem::Specification.new do |gem|
-  gem.name                        = 'guard-jenkins-status-banner'
-  gem.version                     = Guard::JenkinsStatusBannerVersion::VERSION
+  gem.name                        = 'guard-jenkins'
+  gem.version                     = Guard::JenkinsVersion::VERSION
   gem.author                      = 'Justin Stoller'
   gem.email                       = 'justin.stoller@gmail.com'
   gem.homepage                    = 'http://justinstoller.github.com/jenkins_status_banner_guard'
