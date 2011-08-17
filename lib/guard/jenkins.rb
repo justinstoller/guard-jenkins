@@ -56,7 +56,7 @@ module Guard
     end
 
     def last_success_file(job_name)
-      if File.exists @jenkins_path + 'jobs/' + job_name + '/lastSuccessful/build.xml'
+      if File.exists?( @jenkins_path + 'jobs/' + job_name + '/lastSuccessful/build.xml' )
         File.new( @jenkins_path + 'jobs/' + job_name +
                  '/lastSuccessful/build.xml' )
       else
