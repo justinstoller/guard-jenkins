@@ -55,7 +55,7 @@ module Guard
     def job_names
       puts "entered method #job_names"
       job_names = Dir.new(@jenkins_path + 'jobs')
-      puts "retrieved #{job_names.to_yaml}"
+      puts "retrieved #{job_names.to_s}"
       job_names = job_names.reject do |dir|
         if dir == '.'
           puts "'job' is actually directory '.'"
