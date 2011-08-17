@@ -50,9 +50,15 @@ module Guard
 
     def job_names
       Dir.new(@jenkins_path + 'jobs').reject do |dir|
-        return true if dir == '.'
-        return true if dir == '..'
-        return true unless File.directory? dir
+        if dir == '.'
+          true
+        elsif dir == '..'
+          true
+        elsif File.directory? dir
+          false
+        else
+          true
+        end
       end
     end
 
