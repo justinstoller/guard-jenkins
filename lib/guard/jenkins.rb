@@ -6,6 +6,7 @@ module Guard
   class Jenkins < Guard
 
     def initialize( watchers=[], options={} )
+      puts "watchers param for initialize:\n#{watchers.to_s}"
       super
 
       @jenkins_path = options[:jenkins].nil? ? '/var/lib/jenkins/' : options[:jenkins]
@@ -14,7 +15,8 @@ module Guard
       @success_img = options[:success_img].nil? ? @jenkins_path + 'userContent/images/success.png' : options[:success_img]
     end
 
-    def start
+    def start(*args)
+      puts "args to #start:\n#{args.to_s}"
       check_present_jobs unless @skip_check
     end
 
