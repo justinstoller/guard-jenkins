@@ -56,8 +56,12 @@ module Guard
     end
 
     def last_success_file(job_name)
-      File.new( @jenkins_path + 'jobs/' + job_name +
-               '/lastSuccessful/build.xml' )
+      if File.exists @jenkins_path + 'jobs/' + job_name + '/lastSuccessful/build.xml'
+        File.new( @jenkins_path + 'jobs/' + job_name +
+                 '/lastSuccessful/build.xml' )
+      else
+        false
+      end
     end
 
     def next_build_num(job_name)
@@ -67,8 +71,12 @@ module Guard
     end
 
     def last_success_num(build_file)
-      doc = Nokogiri::XML build_file
-      doc.at_xpath('/build/number').text.to_i
+      if build_file
+        doc = Nokogiri::XML build_file
+        doc.at_xpath('/build/number').text.to_i
+      else
+        0
+      end
     end
 
     def current_build_num(job_name)
