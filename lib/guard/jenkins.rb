@@ -49,7 +49,8 @@ module Guard
     end
 
     def job_names
-      Dir.new(@jenkins_path + 'jobs').reject do |dir|
+      job_names = Dir.new(@jenkins_path + 'jobs')
+      job_names = job_names.reject do |dir|
         if dir == '.'
           true
         elsif dir == '..'
@@ -60,6 +61,7 @@ module Guard
           true
         end
       end
+      job_names
     end
 
     def last_success_file(job_name)
