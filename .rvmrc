@@ -1,0 +1,1 @@
+rvm gemset use jenkins_status_banner_guard --create
