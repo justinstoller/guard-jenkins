@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jenkins_status_banner_guard (0.1.0)
+    jenkins-status-banner-guard (0.1.0)
       guard
       nokogiri
 
@@ -30,7 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jenkins_status_banner_guard!
+  jenkins-status-banner-guard!
   rake
   rspec (~> 2.6)
   simplecov (~> 0.4)
