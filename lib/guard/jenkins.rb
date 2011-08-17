@@ -52,7 +52,6 @@ module Guard
     end
 
     def job_names
-      puts 'JOB NAMES WAS CALLED!'
       names = Dir.new(@jenkins_path + 'jobs')
       names = names.reject {|dir| dir == '.' }
       names = names.reject {|dir| dir == '..' }
@@ -69,9 +68,13 @@ module Guard
     end
 
     def next_build_num(job_name)
-      nbn_file = File.new( @jenkins_path + 'jobs/' +
-                          job_name + '/nextBuildNumber' )
-      nbn_file.gets.strip.to_i
+      if File.exists?(@jenkins_path + 'jobs/' + job_name + '/nextBuildNumber' )
+        nbn_file = File.new( @jenkins_path + 'jobs/' +
+                            job_name + '/nextBuildNumber' )
+        nbn_file.gets.strip.to_i
+      else
+        100     # completely arbitrary number greater than 1
+      end
     end
 
     def last_success_num(build_file)
