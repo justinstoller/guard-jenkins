@@ -53,10 +53,10 @@ module Guard
     end
 
     def job_names
-      puts "entered method #job_names"
-      job_names = Dir.new(@jenkins_path + 'jobs')
-      puts "retrieved #{job_names.to_s}"
-      job_names = job_names.reject do |dir|
+      puts "entered method #names"
+      names = Dir.new(@jenkins_path + 'jobs')
+      puts "retrieved #{names.to_s}"
+      names = names.reject do |dir|
         if dir == '.'
           puts "'job' is actually directory '.'"
           true
@@ -71,8 +71,8 @@ module Guard
           true
         end
       end
-      puts "#job_names is returning #{job_names}"
-      job_names
+      puts "#names is returning #{names}"
+      names
     end
 
     def last_success_file(job_name)
