@@ -3,7 +3,7 @@ require 'guard/guard'
 require 'nokogiri'
 
 module Guard
-  class JenkinsStatusBannerGuard < Guard
+  class JenkinsStatusBanner < Guard
 
     def initialize( watchers=[], options={} )
       super
