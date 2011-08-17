@@ -100,14 +100,14 @@ module Guard
     def link_success_img_for(job_name)
       ensure_dir_for job_name
       File.symlink(@jenkins_path + 'userContent/jobs/' +
-                   job_name + 'current_status.png',
+                   job_name + '/current_status.png',
                    @success_img)
     end
 
     def link_fail_img_for(job_name)
       ensure_dir_for job_name
       File.symlink(@jenkins_path + 'userContent/jobs/' +
-                   job_name + 'current_status.png',
+                   job_name + '/current_status.png',
                    @fail_img)
     end
   end
