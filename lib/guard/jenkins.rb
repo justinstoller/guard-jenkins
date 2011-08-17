@@ -35,14 +35,10 @@ module Guard
     end
 
     def check_present_jobs
-      puts 'begining method #check_present_jobs'
       job_names.each do |job|
-        puts "entered loop for #{job}"
         if success? job
-          puts "job was successful"
           link_success_img_for job
         else
-          puts "job was a failure"
           link_fail_img_for job
         end
       end
@@ -53,12 +49,9 @@ module Guard
     end
 
     def job_names
-      puts "entered method #names"
       names = Dir.new(@jenkins_path + 'jobs')
-      puts "retrieved #{names.to_s}"
       names = names.reject {|dir| dir == '.' }
       names = names.reject {|dir| dir == '..' }
-      puts "#names is returning #{names}"
       names
     end
 
@@ -98,17 +91,21 @@ module Guard
     end
 
     def link_success_img_for(job_name)
+      current_status = @jenkins_path + 'userContent/jobs/' + job_name + '/current_status.png'
       ensure_dir_for job_name
-      File.symlink(@jenkins_path + 'userContent/jobs/' +
-                   job_name + '/current_status.png',
-                   @success_img)
+      if File.exists? current_status
+        File.delete current_status
+      end
+      File.symlink( @success_img, current_status )
     end
 
     def link_fail_img_for(job_name)
+      current_status = @jenkins_path + 'userContent/jobs/' + job_name + '/current_status.png'
       ensure_dir_for job_name
-      File.symlink(@jenkins_path + 'userContent/jobs/' +
-                   job_name + '/current_status.png',
-                   @fail_img)
+      if File.exists? current_status
+        File.delete current_status
+      end
+      File.symlink( @fail_img, current_status )
     end
   end
 end
