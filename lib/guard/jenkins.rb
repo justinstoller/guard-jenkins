@@ -56,21 +56,9 @@ module Guard
       puts "entered method #names"
       names = Dir.new(@jenkins_path + 'jobs')
       puts "retrieved #{names.to_s}"
-      names = names.reject do |dir|
-        if dir == '.'
-          puts "'job' is actually directory '.'"
-          true
-        elsif dir == '..'
-          puts "'job' is actually directory '..'"
-          true
-        elsif File.directory? dir
-          puts "'job' isn't actually a directory"
-          false
-        else
-          puts "#{dir} added to array"
-          true
-        end
-      end
+      names = names.reject {|dir| dir == '.' }
+      names = names.reject {|dir| dir == '..' }
+      names = names.detect {|dir| File.directory?(dir) }
       puts "#names is returning #{names}"
       names
     end
