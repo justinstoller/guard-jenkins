@@ -33,6 +33,7 @@ module Guard
     end
 
     def run_on_change( paths=[] )
+      puts "run on change was called with #{paths.to_s}"
       update_status_for paths
     end
 
