@@ -35,10 +35,14 @@ module Guard
     end
 
     def check_present_jobs
+      puts 'begining method #check_present_jobs'
       job_names.each do |job|
+        puts "entered loop for #{job}"
         if success? job
+          puts "job was successful"
           link_success_img_for job
         else
+          puts "job was a failure"
           link_fail_img_for job
         end
       end
@@ -49,18 +53,25 @@ module Guard
     end
 
     def job_names
+      puts "entered method #job_names"
       job_names = Dir.new(@jenkins_path + 'jobs')
+      puts "retrieved #{job_names.to_yaml}"
       job_names = job_names.reject do |dir|
         if dir == '.'
+          puts "'job' is actually directory '.'"
           true
         elsif dir == '..'
+          puts "'job' is actually directory '..'"
           true
         elsif File.directory? dir
+          puts "'job' isn't actually a directory"
           false
         else
+          puts "#{dir} added to array"
           true
         end
       end
+      puts "#job_names is returning #{job_names}"
       job_names
     end
 
