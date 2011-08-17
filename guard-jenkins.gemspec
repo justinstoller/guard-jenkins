@@ -1,4 +1,4 @@
-require File.expand_path( 'lib/guard/guard-jenkins/version' )
+require File.expand_path( 'lib/guard/jenkins/version' )
 
 Gem::Specification.new do |gem|
   gem.name                        = 'guard-jenkins'
