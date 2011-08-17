@@ -29,7 +29,7 @@ module Guard
     end
 
     def run_all
-      true
+      check_present_jobs
     end
 
     def run_on_change( paths=[] )
@@ -39,16 +39,29 @@ module Guard
 
     def check_present_jobs
       job_names.each do |job|
-        if success? job
-          link_success_img_for job
-        else
-          link_fail_img_for job
-        end
+        update_image_for job
       end
     end
 
-    def update_status_for( paths=[] )
+    def update_image_for(job)
+      if success? job
+        link_success_img_for job
+      else
+        link_fail_img_for job
+      end
+    end
 
+    def get_job_name_from(path)
+      p = path.gsub(/\/builds.*$/, '')
+      q = p.gsub(/^jobs\//, '')
+      q
+    end
+
+    def update_status_for( paths=[] )
+      jobs = paths.map {|path| get_job_name_from path }
+      jobs.each do |job|
+        update_image_for job
+      end
     end
 
     def job_names
