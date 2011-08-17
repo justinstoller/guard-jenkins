@@ -1,2 +1,0 @@
-module JenkinsStatus_banner_guard
-end
