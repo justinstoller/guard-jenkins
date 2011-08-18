@@ -1,3 +1,5 @@
 Changelog:
   - 0.1.0:
     - initial sprint
+  - 0.1.1:
+    - cleaned up some unfortunate descriptions in the gemspec
