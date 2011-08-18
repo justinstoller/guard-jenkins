@@ -1,6 +1,10 @@
 # Guard-Jenkins#
 
-Thanks for checking out this Jenkins Guard!
+Thanks for checking out Jenkins Guard!
+
+Guard-Jenkins checks for the modification of the nextBuildNumber file in
+a job's directory and then creates a symlink from either fail.png or
+success.png to $JENKINS_HOME/userContent/jobs/JOB_NAME/current_status.png
 
 A
 [RoadMap](https://github.com/justinstoller/guard-jenkins/wiki/Road-Map)
@@ -30,6 +34,7 @@ Everyone should pitch in!
 If you want to do development on this project you will need:
 
 Rspec ~> 2.6
+
 SimpleCov ~> 0.4
 
 ### Submit an Issue: ###
